@@ -1,20 +1,27 @@
 {% include 'static/index.html' %}
 
-{% block title %}
-{{ title }}
-{% endblock %}
-
-
-<h1>
-    This is the Dealer Review page
-</h1>
-
-
-
 <div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-
-            <h2 class="text-center mb-4">Dealer Reviews</h2>
+            <h2 class="text-left mb-4">Reviews for {{ current_dealership }}</h2>
         </div>
     </div>
+    <div class="row">
+        {% for i in reviews %}
+        <div class="col-md-3 mb-3">
+            <div class="card card-3d" style="width: 100%;">
+                {% if i.sentiment > 0 %}
+                <img class="card-img-left" src="{{ MEDIA_URL }}/emoji/positive.png" width="30">
+                {% elif i.sentiment < 0 %} <img class="card-img-left" src="{{ MEDIA_URL }}/emoji/negative.png"
+                    width="30">
+                    {% else %}
+                    <img class="card-img-left" src="{{ MEDIA_URL }}/emoji/neutral.png" width="30">
+                    {% endif %}
+                    <p class="card-title"><strong>{{ i.car_model }}</strong></p>
+                    <p class="card-title"><strong>{{ i.car_year }}</strong></p>
+                    <p class="card-title">{{ i.review }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

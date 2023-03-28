@@ -1,9 +1,31 @@
 {% include 'static/index.html' %}
 
-{% block title %}
-{{ title }}
-{% endblock %}
 
 <h1>
     This is th Home Page.
 </h1>
+<table class="table" id="table">
+    <thead>
+        <tr>
+            <th data-field="id">ID</th>
+            ...
+        </tr>
+    </thead>
+    <tbody>
+        {% for dealer in dealership_list %}
+        <tr>
+            <td>{{dealer.id}}</td>
+            ...
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="container">
+    <h1>Dealerships</h1>
+    <ul>
+        {% for i in dealership %}
+        <li>{{ i.full_name }}</li>
+        {% endfor %}
+    </ul>
+</div>

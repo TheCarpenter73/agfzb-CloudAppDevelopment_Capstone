@@ -1,0 +1,33 @@
+{% include 'static/index.html' %}
+
+<table class="table" id="table" data-filter-control="true">
+    <script>
+        $(function () {
+            $('#table').bootstrapTable()
+        })
+    </script>
+    <thead>
+        <tr>
+            <th data-field="id">ID</th>
+            <th data-field="id">Name</th>
+            <th data-field="id">City</th>
+            <th data-field="id">Address</th>
+            <th data-field="id">Zip</th>
+            <th data-field="state" data-filter-control="select">State</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for dealer in dealership %}
+        <tr>
+            <td>{{dealer.id}}</td>
+            <td><a href="/djangoapp/dealerships/?id={{dealer.id}}">{{dealer.full_name}}</a></td>
+            <td>{{dealer.city}}</td>
+            <td>{{dealer.address}}</td>
+            <td>{{dealer.zip}}</td>
+            <td>{{dealer.st}}</td>
+            <td></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

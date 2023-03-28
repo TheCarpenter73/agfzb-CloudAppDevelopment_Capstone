@@ -16,63 +16,57 @@
 </head>
 
 <body>
-    <!-- navbar section -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"> {{ title }} </a>
-        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button> -->
+        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="home">Home</a>
-                </li>
-                <li class=" nav-item">
-                    <a class="nav-link" href="reviews">Reviews</a>
+                    <a class="nav-link" href="/djangoapp/home">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about">About Us</a>
+                    <a class="nav-link" href="/djangoapp/about_2">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact">Contact Us</a>
+                    <a class="nav-link" href="/djangoapp/contact">Contact Us</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/djangoapp/dealerships">Dealerships</a>
+                </li>
+
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                <li class="nav-item">
+                    <span class="navbar-text">The Current User is <strong>{{ username }}</strong></span>
+                </li>
+                <a class="nav-link" href="./add_review/?current_dealership={{current_dealership}}">Add Review</a>
+                </li>
+                </li>
+                <a class="nav-link" href="logout_request">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <form class="form-inline my-2 my-lg-0" action="login">
+                        <input class="form-control mr-sm-2" type="text" name="username" placeholder="Username">
+                        <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+                    </form>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="djangoapp/registration_request">Signup</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
+
     <!-- end navbar section -->
     <!--Add a dealer table here -->
-</body>
+
 
 </html>
-
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dealership Review</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
-
-</head>
-
-    <body>
-    <!-- Remove this line the first time you edit this file -->
-This is the index page of your Django app!
-<!--Add a nav bar here -->
-
-<!--Add a dealer table here -->
-
-</body>
-
-</html> -->
